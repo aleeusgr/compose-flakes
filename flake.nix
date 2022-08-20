@@ -7,7 +7,7 @@
       # a-flake.url = "path:./a-flake";
       # b-flake.url = "path:./b-flake";
     };
-  outputs = { self, nixpkgs, a-flake, b-flake }: 
+  outputs = { self, nixpkgs, }: 
     {
     devShell = nixpkgs.mkShell {
           buildInputs = with nixpkgs; [
