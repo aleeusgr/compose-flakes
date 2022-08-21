@@ -10,10 +10,6 @@
     };
   outputs = { self, }: 
     {
-#    devShell = nixpkgs.mkShell {
-#          buildInputs = with nixpkgs; [
-#          ];
-          inputsFrom = builtins.attrValues self.packages.${system};
-#        }; 
+
     };
 }
