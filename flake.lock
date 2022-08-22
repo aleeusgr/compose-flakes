@@ -1,12 +1,42 @@
 {
   "nodes": {
+    "a-flake": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-hs+4zsbS8OeKtjnxukp298bXwh0x0Z0iQv2/Xg1oyaE=",
+        "path": "./a-flake",
+        "type": "path"
+      },
+      "original": {
+        "path": "./a-flake",
+        "type": "path"
+      }
+    },
+    "b-flake": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-pTM6iyGsfoH1XULN3wqAfpsI9C4iZyeiN0JMREUpGks=",
+        "path": "./b-flake",
+        "type": "path"
+      },
+      "original": {
+        "path": "./b-flake",
+        "type": "path"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1661085474,
-        "narHash": "sha256-1iGnVn8FoVOcNvyw3n9gGoCakgDzN1Ddi8VMEk1AfPE=",
+        "lastModified": 1661144916,
+        "narHash": "sha256-bg4XW7YgFJ2QmaPFpVOsXWe5IRAmYwkItJuoApAhX0g=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f785fc62052e434b15c0032470fa5e436cb7992e",
+        "rev": "b655b6161ef186e052bbd113d7c75dad63f2699e",
         "type": "github"
       },
       "original": {
@@ -15,9 +45,40 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1661144916,
+        "narHash": "sha256-bg4XW7YgFJ2QmaPFpVOsXWe5IRAmYwkItJuoApAhX0g=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "b655b6161ef186e052bbd113d7c75dad63f2699e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1661120702,
+        "narHash": "sha256-o2P8sp6FaCwPT8i67Un3w5DN0+nFnY8e9xk7Tj0hpmE=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3ed15c29ce0fd1c3fcfbbeebcf1607057200d83c",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "a-flake": "a-flake",
+        "b-flake": "b-flake",
+        "nixpkgs": "nixpkgs_3"
       }
     }
   },
