@@ -8,10 +8,10 @@
       b-flake.url = "path:./b-flake";
     };
   outputs = { self, nixpkgs, a-flake, b-flake }: 
+  {
+    devShell.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.mkShell 
     {
-    devShell = nixpkgs.mkShell {
-          buildInputs = with nixpkgs; [
-          ];
+          buildInputs = with nixpkgs; [];
           inputsFrom = [self.devShell.a-flake self.devShell.b-flake];
     };
   };
