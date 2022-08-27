@@ -9,10 +9,19 @@
     };
   outputs = { self, nixpkgs, a-flake, b-flake } @ inputs: 
   {
+
     devShell.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.mkShell 
     {
     #      buildInputs = with nixpkgs; [];
-    #      inputsFrom = [self.devShell.a-flake self.devShell.b-flake];
+    #       inputsFrom = [self.devShell.a-flake self.devShell.b-flake]; #error: attribute 'a-flake' missing
+    #       inherit (inputs.a-flake) devShell;                          #error: cannot coerce a set to a string
+    #       inherit (inputs.a-flake) mkShell;                           #error: attribute mkShell is missing
+    };
+    devShells.x86_64-linux.default = inputs.a-flake.devShell{           #error: attempt to call something which is not a function but a set
+      #packages = __attrValues {
+        #inherit (self.packages.x86_64-linux) nil alejandra;
+        inherit (inputs.a-flake.devShells) cowsay;
+      #};
     };
   };
 }
