@@ -14,10 +14,10 @@
     #      buildInputs = with nixpkgs; [];
     #      inputsFrom = [self.devShell.a-flake self.devShell.b-flake];
     #};
-    devShells.x86_64-linux.default = inputs.a-flake.devShell {
-      packages = __attrValues {
-        inherit (inputs.a-flake.x86_64-linux) cowsay;
-      };
+    devShells.x86_64-linux.default = inputs.nixpkgs.legacyPackages.x86_64-linux.mkShell {#inputs.a-flake.devShell {
+      #packages = __attrValues {
+      #  inherit (inputs.a-flake.x86_64-linux) cowsay;
+      #};
     };
   };
 }
