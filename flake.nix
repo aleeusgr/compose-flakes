@@ -4,15 +4,20 @@
       nixpkgs.url = "github:nixos/nixpkgs"; 
       # flake-utils.url = "github:numtide/flake-utils";
       # local directories (for absolute paths you can omit 'path:')
-      a-flake.url = "path:./a-flake";
-      b-flake.url = "path:./b-flake";
+      a-flake.url = "/home/alex/workshop/nix/compose-flakes/a-flake";
+      b-flake.url = "/home/alex/workshop/nix/compose-flakes/b-flake";
     };
-  outputs = { self, nixpkgs, a-flake, b-flake }: 
+  outputs = { self, nixpkgs, a-flake, b-flake } @ inputs: 
   {
-    devShell.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.mkShell 
-    {
-          buildInputs = with nixpkgs; [];
-          inputsFrom = [self.devShell.a-flake self.devShell.b-flake];
+    #devShell.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.mkShell 
+    #{
+    #      buildInputs = with nixpkgs; [];
+    #      inputsFrom = [self.devShell.a-flake self.devShell.b-flake];
+    #};
+    devShells.x86_64-linux.default = inputs.a-flake.devShell {
+      packages = __attrValues {
+        inherit (inputs.a-flake.x86_64-linux) cowsay;
+      };
     };
   };
 }
