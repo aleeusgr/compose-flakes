@@ -9,3 +9,5 @@
         pkgs.mkShell { buildInputs = [ self.packages.x86_64-linux.hello ]; };
    };
 }
+
+# here $nix run can be set up to run a test: $hello
