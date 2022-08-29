@@ -8,4 +8,6 @@
       devShell.x86_64-linux =
         pkgs.mkShell { buildInputs = [ pkgs.cowsay ]; };
    };
+
 }
+# here $nix run can be set up to run a test: echo 'Hello World!' | cowsay
