@@ -29,9 +29,9 @@
     ]
     (
       system: let
-        # inherit (nixpkgs) lib; # lib = nixpkgs.lib
+        inherit (nixpkgs) lib; # lib = nixpkgs.lib
         pkgs = nixpkgs.legacyPackages.${system};
-        #warnToUpdateNix = pkgs.lib.warn "Consider updating to Nix > 2.7 to remove this warning!";
+        warnToUpdateNix = pkgs.lib.warn "Consider updating to Nix > 2.7 to remove this warning!";
         #src = lib.sourceByRegex self [
         #  "^benchmark.*$"
         #  "^models.*$"
@@ -66,23 +66,23 @@
           #    echo "=== monad-bayes development shell ==="
           #  '';
         };
-        #pre-commit = pre-commit-hooks.lib.${system}.run {
-        #  inherit src;
+        #pre-commit = pre-commit-hooks.lib.${system}.run { #won't run without src
+        ##  inherit src; 
         #  hooks = {
-        #    alejandra.enable = true;
-        #    cabal-fmt.enable = true;
-        #    hlint.enable = false;
-        #    ormolu.enable = true;
+        ##    alejandra.enable = true;
+        ##    cabal-fmt.enable = true;
+        ##    hlint.enable = false;
+        ##    ormolu.enable = true;
         #  };
         #};
-      in rec { #rec for record?
-        #packages = {inherit pre-commit;};
-        #packages.default = packages.monad-bayes;
+      in rec { #rec for record?, this lists stuff needed for nix [run shell develop]
+        packages = {inherit pre-commit;}; # line 69?
+        packages.default = packages.monad-bayes; #need a generic default package
         #checks = {inherit monad-bayes pre-commit;};
         devShells.default = monad-bayes-dev;
         # Needed for backwards compatibility with Nix versions <2.8
-        #defaultPackage = warnToUpdateNix packages.default;
-        #devShell = warnToUpdateNix devShells.default;
+        defaultPackage = warnToUpdateNix packages.default; #maybe I can remove packages.default??
+        devShell = warnToUpdateNix devShells.default;
       }
     );
 }
