@@ -1,3 +1,4 @@
+#https://github.com/tweag/monad-bayes/blob/master/flake.nix
 {
   description = "A very basic flake";
   inputs = {
