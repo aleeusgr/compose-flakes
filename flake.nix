@@ -12,16 +12,26 @@
     };
     outputs = { 
       self, 
+      flake-utils,
       nixpkgs, 
-      a-flake, 
       pre-commit-hooks,
-      b-flake }: # @ inputs:  #@ inputs; from Nobbz.
-  #{
+      a-flake, 
+      b-flake 
+    }: # @ inputs:  # from Nobbz.
+  flake-utils.lib.eachSystem
+    [
+      # Tier 1 - Tested in CI
+      flake-utils.lib.system.x86_64-linux
+      flake-utils.lib.system.x86_64-darwin
+      # Tier 2 - Not tested in CI (at least for now)
+      flake-utils.lib.system.aarch64-linux
+      flake-utils.lib.system.aarch64-darwin
+    ]
     (
       system: let
-        inherit (nixpkgs) lib; # lib = nixpkgs.lib
+        # inherit (nixpkgs) lib; # lib = nixpkgs.lib
         pkgs = nixpkgs.legacyPackages.${system};
-        warnToUpdateNix = pkgs.lib.warn "Consider updating to Nix > 2.7 to remove this warning!";
+        #warnToUpdateNix = pkgs.lib.warn "Consider updating to Nix > 2.7 to remove this warning!";
         #src = lib.sourceByRegex self [
         #  "^benchmark.*$"
         #  "^models.*$"
@@ -50,30 +60,29 @@
             #ormolu
             #cabal-docspec
           ];
-          shellHook =
-            pre-commit.shellHook
-            + ''
-              echo "=== monad-bayes development shell ==="
-            '';
+          #shellHook =
+          #  pre-commit.shellHook
+          #  + ''
+          #    echo "=== monad-bayes development shell ==="
+          #  '';
         };
-        pre-commit = pre-commit-hooks.lib.${system}.run {
+        #pre-commit = pre-commit-hooks.lib.${system}.run {
         #  inherit src;
-          hooks = {
+        #  hooks = {
         #    alejandra.enable = true;
         #    cabal-fmt.enable = true;
         #    hlint.enable = false;
         #    ormolu.enable = true;
-          };
-        };
+        #  };
+        #};
       in rec { #rec for record?
-        packages = {inherit pre-commit;};
+        #packages = {inherit pre-commit;};
         #packages.default = packages.monad-bayes;
         #checks = {inherit monad-bayes pre-commit;};
         devShells.default = monad-bayes-dev;
         # Needed for backwards compatibility with Nix versions <2.8
-        defaultPackage = warnToUpdateNix packages.default;
-        devShell = warnToUpdateNix devShells.default;
+        #defaultPackage = warnToUpdateNix packages.default;
+        #devShell = warnToUpdateNix devShells.default;
       }
     );
-  #};
 }
