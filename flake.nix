@@ -64,7 +64,7 @@
           shellHook =
             pre-commit.shellHook
             + ''
-              echo "=== monad-bayes development shell ==="
+              echo "this is a nix shell"
             '';
         };
         pre-commit = pre-commit-hooks.lib.${system}.run { #won't run without src
