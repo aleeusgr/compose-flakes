@@ -53,7 +53,7 @@
         ##this was misleading initially wit `let` above
         #in
         #  ce.cabal-docspec.components.exes.cabal-docspec;
-        monad-bayes-dev = pkgs.mkShell {
+        mainShell = pkgs.mkShell {
           #inputsFrom = [monad-bayes.env];
           packages = with pre-commit-hooks.packages.${system}; [
             #alejandra
@@ -81,7 +81,7 @@
         packages = {inherit pre-commit;}; # line 69?
         #packages.default = packages.monad-bayes; #need a generic default package
         #checks = {inherit monad-bayes pre-commit;};
-        devShells.default = monad-bayes-dev;
+        devShells.default = mainShell;
         # Needed for backwards compatibility with Nix versions <2.8
         defaultPackage = warnToUpdateNix packages.default; #maybe I can remove packages.default??
         devShell = warnToUpdateNix devShells.default;
