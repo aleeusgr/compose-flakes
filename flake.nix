@@ -68,8 +68,8 @@
               echo "this is a nix shell"
             '';
         };
-        pre-commit = pre-commit-hooks.lib.${system}.run { #won't run without src
-          src = " " ;
+        pre-commit = pre-commit-hooks.lib.${system}.run { 
+          src = " " ; #won't run without this line
           hooks = {
         #    alejandra.enable = true;
         #    cabal-fmt.enable = true;
