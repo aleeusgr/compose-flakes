@@ -2,12 +2,22 @@
 
 A Nix flake is a directory that contains a flake.nix file. That file must contain an attribute set with one required attribute – outputs – and optionally description and inputs.
 
-need to output two devShells and then compose them into one.
-https://github.com/aleeusgr/compose-flakes/issues/1
+## Description
 
-a-flake -> haskell, devshell should respond to ghc --version
-b-flake -> python, python --version
-. -> both python and haskell
+this is a template flake.nix It's purpose is to show how two compose a single flake from two small ones.
+
+a-flake contains cowsay,  b-flake contains hello
+
+main flake is based on [this flake](https://github.com/tweag/monad-bayes/blob/master/flake.nix)
+
+## usage
+
+clone the repo and run `nix develop`
+
+A message will be displayed once dev environment is set up.
+
+run `hello | cowsay` to test.
+
 
 ## Docs
 
