@@ -19,7 +19,7 @@
       pre-commit-hooks,
       a-flake, 
       b-flake 
-    }: # @ inputs:  # from Nobbz.
+    } @ inputs:  # from Nobbz.
   flake-utils.lib.eachSystem
     [
       # Tier 1 - Tested in CI
@@ -53,8 +53,11 @@
         ##this was misleading initially wit `let` above
         #in
         #  ce.cabal-docspec.components.exes.cabal-docspec;
+
+        b-shell = inputs.b-flake.devShell.x86_64-linux;
+        a-shell = inputs.a-flake.devShell.x86_64-linux;
         mainShell = pkgs.mkShell {
-          #inputsFrom = [monad-bayes.env];
+          inputsFrom = [a-shell b-shell];
           packages = with pre-commit-hooks.packages.${system}; [
             #alejandra
             #cabal-fmt
