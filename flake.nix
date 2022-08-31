@@ -61,24 +61,24 @@
             #ormolu
             #cabal-docspec
           ];
-          #shellHook =
-          #  pre-commit.shellHook
-          #  + ''
-          #    echo "=== monad-bayes development shell ==="
-          #  '';
+          shellHook =
+            pre-commit.shellHook
+            + ''
+              echo "=== monad-bayes development shell ==="
+            '';
         };
-        #pre-commit = pre-commit-hooks.lib.${system}.run { #won't run without src
-        ##  inherit src; 
-        #  hooks = {
-        ##    alejandra.enable = true;
-        ##    cabal-fmt.enable = true;
-        ##    hlint.enable = false;
-        ##    ormolu.enable = true;
-        #  };
-        #};
+        pre-commit = pre-commit-hooks.lib.${system}.run { #won't run without src
+          src = " " ;
+          hooks = {
+        #    alejandra.enable = true;
+        #    cabal-fmt.enable = true;
+        #    hlint.enable = false;
+        #    ormolu.enable = true;
+          };
+        };
       in rec { #rec for record?, this lists stuff needed for nix [run shell develop]
         packages = {inherit pre-commit;}; # line 69?
-        packages.default = packages.monad-bayes; #need a generic default package
+        #packages.default = packages.monad-bayes; #need a generic default package
         #checks = {inherit monad-bayes pre-commit;};
         devShells.default = monad-bayes-dev;
         # Needed for backwards compatibility with Nix versions <2.8

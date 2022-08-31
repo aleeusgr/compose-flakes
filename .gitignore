@@ -6,3 +6,4 @@ runs
 .direnv
 .envrc
 .github
+.pre-commit-config.yaml
