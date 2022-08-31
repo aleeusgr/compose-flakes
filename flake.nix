@@ -8,6 +8,7 @@
       a-flake.url = "/home/alex/workshop/nix/compose-flakes/a-flake";
       b-flake.url = "/home/alex/workshop/nix/compose-flakes/b-flake";
       pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+      #what's follows?
       pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
       pre-commit-hooks.inputs.flake-utils.follows = "flake-utils";
     };
