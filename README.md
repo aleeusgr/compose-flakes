@@ -10,6 +10,7 @@ b-flake -> python, python --version
 . -> both python and haskell
 
 ## Docs
+
 https://nixos.org/guides/nix-pills/index.html
 
 https://ianthehenry.com/posts/how-to-learn-nix/
@@ -24,7 +25,6 @@ https://xeiaso.net/blog/nix-flakes-1-2022-02-21
 https://nixos.wiki/wiki/Flakes
 https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-flake.html
 
-I don't think this is needed, but overlays are often mentioned
-
-https://nixos.wiki/wiki/Overlays
-https://nixos.org/manual/nixpkgs/stable/#sec-overlays-definition
+I don't think this is needed, but overlays are often mentioned:
+~https://nixos.wiki/wiki/Overlays~
+~https://nixos.org/manual/nixpkgs/stable/#sec-overlays-definition~
