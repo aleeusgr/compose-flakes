@@ -5,7 +5,8 @@
       nixpkgs.url = "github:nixos/nixpkgs"; 
       flake-utils.url = "github:numtide/flake-utils";
       # local directories (for absolute paths you can omit 'path:')
-      a-flake.url = "/home/alex/workshop/nix/compose-flakes/a-flake";
+      #a-flake.url = "/home/alex/workshop/nix/compose-flakes/a-flake";
+      a-flake.url = "https://github.com/aleeusgr/compose-flakes/tree/main/a-flake";
       b-flake.url = "/home/alex/workshop/nix/compose-flakes/b-flake";
       pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
       #what's follows?
@@ -54,7 +55,7 @@
         #in
         #  ce.cabal-docspec.components.exes.cabal-docspec;
 
-        b-shell = inputs.b-flake.devShell.x86_64-linux;
+        b-shell = inputs.b-flake.devShell.${system};
         a-shell = inputs.a-flake.devShell.x86_64-linux;
         mainShell = pkgs.mkShell {
           inputsFrom = [a-shell b-shell];
@@ -68,7 +69,7 @@
           shellHook =
             pre-commit.shellHook
             + ''
-              echo "this is a nix shell"
+              echo "this is a nix shell ${system}"
             '';
         };
         pre-commit = pre-commit-hooks.lib.${system}.run { 
