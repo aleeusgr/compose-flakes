@@ -5,8 +5,11 @@
       nixpkgs.url = "github:nixos/nixpkgs"; 
       flake-utils.url = "github:numtide/flake-utils";
       # local directories (for absolute paths you can omit 'path:')
-      #a-flake.url = "/home/alex/workshop/nix/compose-flakes/a-flake";
-      a-flake.url = "https://github.com/aleeusgr/compose-flakes/tree/main/a-flake";
+      #a-flake.url = "/home/alex/workshop/nix/compose-flakes/a-flake"; 
+      # git urls
+      #github:edolstra/nix-warez?dir=blender: A flake in a subdirectory of a GitHub repository.
+      #a-flake.url = "github:edolstra/nix-warez?dir=blender";
+      a-flake.url = "github:aleeusgr/compose-flakes?dir=a-flake";
       b-flake.url = "/home/alex/workshop/nix/compose-flakes/b-flake";
       pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
       #what's follows?

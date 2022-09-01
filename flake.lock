@@ -6,15 +6,18 @@
       },
       "locked": {
         "dir": "a-flake",
-        "lastModified": 1661237057,
-        "narHash": "sha256-tbz514086rhfRDBXaYAyhM2piqDmKTkpJnuef+9rAq8=",
-        "type": "git",
-        "url": "file:///home/alex/workshop/nix/compose-flakes?dir=a-flake"
+        "lastModified": 1662022064,
+        "narHash": "sha256-FPLf6Bf8QSLSCAAbuOVrFRnChAgE7O8UTuffxUJ4ta0=",
+        "owner": "aleeusgr",
+        "repo": "compose-flakes",
+        "rev": "76fd30fd4417950f95977ef311d9c6dd2ebd7437",
+        "type": "github"
       },
       "original": {
         "dir": "a-flake",
-        "type": "git",
-        "url": "file:///home/alex/workshop/nix/compose-flakes?dir=a-flake"
+        "owner": "aleeusgr",
+        "repo": "compose-flakes",
+        "type": "github"
       }
     },
     "b-flake": {
